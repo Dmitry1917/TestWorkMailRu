@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A19CE2B1F556F000012CB39 /* CommonNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A19CE2A1F556F000012CB39 /* CommonNetworkManager.m */; };
 		0A38E9C21F5411EC00542431 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38E9C11F5411EC00542431 /* main.m */; };
 		0A38E9C51F5411EC00542431 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38E9C41F5411EC00542431 /* AppDelegate.m */; };
 		0A38E9CD1F5411EC00542431 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A38E9CC1F5411EC00542431 /* Assets.xcassets */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A19CE291F556F000012CB39 /* CommonNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonNetworkManager.h; sourceTree = "<group>"; };
+		0A19CE2A1F556F000012CB39 /* CommonNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonNetworkManager.m; sourceTree = "<group>"; };
 		0A38E9BD1F5411EC00542431 /* TwitterPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A38E9C11F5411EC00542431 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0A38E9C31F5411EC00542431 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 			children = (
 				0AE7F5491F542E01006F09DB /* CommonDateFormatter.h */,
 				0AE7F54A1F542E01006F09DB /* CommonDateFormatter.m */,
+				0A19CE291F556F000012CB39 /* CommonNetworkManager.h */,
+				0A19CE2A1F556F000012CB39 /* CommonNetworkManager.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A38E9DD1F5417A000542431 /* TwitterScreenRouter.m in Sources */,
+				0A19CE2B1F556F000012CB39 /* CommonNetworkManager.m in Sources */,
 				0A38E9C51F5411EC00542431 /* AppDelegate.m in Sources */,
 				0A38E9E51F54207100542431 /* TwitterScreenPresenter.m in Sources */,
 				0A5E23031F544CD1003361A5 /* TweetTableViewCell.m in Sources */,
