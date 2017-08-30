@@ -24,7 +24,10 @@
 
 -(void)fillWithViewModel:(TweetViewModel *)model {
     [self.userNameLabel setText:model.user.name];
+    [self.screenNameLabel setText:model.user.screenName];
+    [self.dateLabel setText:model.formattedDate];
     [self.tweetLabel setText:model.text];
+    [self.favoriteButton setImage:model.favorited ? [UIImage imageNamed:@"favorite"] : [UIImage imageNamed:@"unfavorite"] forState:UIControlStateNormal];
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:model.user.avatarUrlStr] placeholderImage:[UIImage imageNamed:@"avatarDefault"]];
 }
 
@@ -33,6 +36,9 @@
     
     self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.height / 2.0;
     self.avatarImageView.layer.masksToBounds = YES;
+}
+
+- (IBAction)favoriteButtonTaped:(id)sender {
 }
 
 @end

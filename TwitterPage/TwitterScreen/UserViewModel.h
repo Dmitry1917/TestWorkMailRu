@@ -11,6 +11,7 @@
 @interface UserViewModel : NSObject
 
 @property NSString *name;
+@property NSString *screenName;
 @property NSString *avatarUrlStr;
 
 @end

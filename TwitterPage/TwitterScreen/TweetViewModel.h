@@ -13,6 +13,7 @@
 
 @property NSString *text;
 @property NSString *formattedDate;
+@property BOOL favorited;
 @property UserViewModel *user;
 
 @end

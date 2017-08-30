@@ -11,8 +11,8 @@
 
 @implementation TwitterScreenPresenter
 
--(void)updateModel {
-    TweetViewModel *tweet1 = [[TweetViewModel alloc] init];
+-(void)updateModel:(NSArray <TweetViewModel*> *)tweets {
+    /*TweetViewModel *tweet1 = [[TweetViewModel alloc] init];
     tweet1.text = @"tweet1 text";
     tweet1.formattedDate = [CommonDateFormatter formattedTweetDate:[NSDate date]];
     tweet1.user = [[UserViewModel alloc] init];
@@ -38,9 +38,12 @@
     tweet4.formattedDate = [CommonDateFormatter formattedTweetDate:[NSDate dateWithTimeIntervalSinceNow:-23600]];
     tweet4.user = [[UserViewModel alloc] init];
     tweet4.user.name = @"name4";
-    tweet4.user.avatarUrlStr = @"https://cdn4.iconfinder.com/data/icons/country-flag-1/744/Australia-128.png";
+    tweet4.user.avatarUrlStr = @"https://cdn4.iconfinder.com/data/icons/country-flag-1/744/Australia-128.png";*/
     
-    [_view updateModel:@[tweet1, tweet2, tweet3, tweet4]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (!self.view) return;
+        [self.view updateModel:tweets];//@[tweet1, tweet2, tweet3, tweet4]];
+    });
 }
 
 @end

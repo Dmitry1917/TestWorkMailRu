@@ -24,7 +24,7 @@
 
 @protocol TwitterScreenVIPPresenter <NSObject>
 
--(void)updateModel;
+-(void)updateModel:(NSArray <TweetViewModel*> *)tweets;
 
 @end
 

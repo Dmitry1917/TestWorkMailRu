@@ -11,16 +11,17 @@
 @implementation CommonDateFormatter
 
 +(NSString*)formattedTweetDate:(NSDate*)date {
-    static NSDateFormatter *dateFormatter;
+    static NSDateComponentsFormatter *dateComponentsFormatter;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateStyle = NSDateFormatterShortStyle;
-        dateFormatter.timeStyle = NSDateFormatterShortStyle;
-        dateFormatter.doesRelativeDateFormatting = YES;
+        dateComponentsFormatter = [[NSDateComponentsFormatter alloc] init];
+        dateComponentsFormatter.unitsStyle = NSDateComponentsFormatterUnitsStyleAbbreviated;
+        dateComponentsFormatter.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorDropAll;
+        dateComponentsFormatter.maximumUnitCount = 1;
+        dateComponentsFormatter.allowedUnits = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     });
     
-    return [dateFormatter stringFromDate:date];
+    return [dateComponentsFormatter stringFromDate:date toDate:[NSDate date]];
 }
 
 +(NSDate*)dateFromServerString:(NSString*)serverString {

@@ -9,7 +9,7 @@
 #import "TwitterScreenViewController.h"
 #import "TweetTableViewCell.h"
 
-#define defaultCellHeight 60.0
+#define defaultCellHeight 90.0
 
 @interface TwitterScreenViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tweetsTableView;
