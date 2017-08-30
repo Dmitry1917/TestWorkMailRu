@@ -11,6 +11,6 @@
 @interface CommonNetworkManager : NSObject
 
 +(instancetype)shared;
--(void)askTimelineWithCompletionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
+-(void)executeRequest:(NSURLRequest*)request withCompletionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
 
 @end
