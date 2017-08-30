@@ -1,5 +1,5 @@
 //
-//  TwitterRequestsManager.h
+//  TwitterRequestParser.h
 //  TwitterPage
 //
 //  Created by DMITRY SINYOV on 30.08.17.
@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "TweetModel.h"
 
-@interface TwitterRequestsManager : NSObject
+@interface TwitterRequestParser : NSObject
 
-+(void)askTimelineWithCompletionHandler:(void (^)(NSArray <TweetModel*> *tweets))completionHandler;
++(NSArray <TweetModel*>*)parseTimeline:(id)JSON;
 
 @end

@@ -22,6 +22,11 @@
 		0A9386F11F56CDB4003CE196 /* CommonNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9386EC1F56CDB4003CE196 /* CommonNetworkManager.m */; };
 		0A9386F21F56CDB4003CE196 /* TwitterRequestSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9386EE1F56CDB4003CE196 /* TwitterRequestSigner.m */; };
 		0A9386F31F56CDB4003CE196 /* TwitterRequestsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9386F01F56CDB4003CE196 /* TwitterRequestsManager.m */; };
+		0A9386F61F56DAA2003CE196 /* TweetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9386F51F56DAA2003CE196 /* TweetModel.m */; };
+		0A9386F91F56DAB3003CE196 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9386F81F56DAB3003CE196 /* UserModel.m */; };
+		0A9386FC1F56F3C0003CE196 /* TwitterRequestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9386FB1F56F3C0003CE196 /* TwitterRequestParser.m */; };
+		0A9386FF1F56F775003CE196 /* CommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9386FE1F56F775003CE196 /* CommonModel.m */; };
+		0A9387021F56FBF4003CE196 /* ParseFieldChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9387011F56FBF4003CE196 /* ParseFieldChecker.m */; };
 		0AE7F5441F54294D006F09DB /* TweetViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE7F5431F54294D006F09DB /* TweetViewModel.m */; };
 		0AE7F5471F5429D3006F09DB /* UserViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE7F5461F5429D3006F09DB /* UserViewModel.m */; };
 		0AE7F54B1F542E01006F09DB /* CommonDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE7F54A1F542E01006F09DB /* CommonDateFormatter.m */; };
@@ -57,6 +62,16 @@
 		0A9386EE1F56CDB4003CE196 /* TwitterRequestSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterRequestSigner.m; sourceTree = "<group>"; };
 		0A9386EF1F56CDB4003CE196 /* TwitterRequestsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterRequestsManager.h; sourceTree = "<group>"; };
 		0A9386F01F56CDB4003CE196 /* TwitterRequestsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterRequestsManager.m; sourceTree = "<group>"; };
+		0A9386F41F56DAA2003CE196 /* TweetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetModel.h; sourceTree = "<group>"; };
+		0A9386F51F56DAA2003CE196 /* TweetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetModel.m; sourceTree = "<group>"; };
+		0A9386F71F56DAB3003CE196 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		0A9386F81F56DAB3003CE196 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		0A9386FA1F56F3C0003CE196 /* TwitterRequestParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterRequestParser.h; sourceTree = "<group>"; };
+		0A9386FB1F56F3C0003CE196 /* TwitterRequestParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterRequestParser.m; sourceTree = "<group>"; };
+		0A9386FD1F56F775003CE196 /* CommonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonModel.h; sourceTree = "<group>"; };
+		0A9386FE1F56F775003CE196 /* CommonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonModel.m; sourceTree = "<group>"; };
+		0A9387001F56FBF4003CE196 /* ParseFieldChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseFieldChecker.h; sourceTree = "<group>"; };
+		0A9387011F56FBF4003CE196 /* ParseFieldChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseFieldChecker.m; sourceTree = "<group>"; };
 		0AE7F5421F54294D006F09DB /* TweetViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewModel.h; sourceTree = "<group>"; };
 		0AE7F5431F54294D006F09DB /* TweetViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewModel.m; sourceTree = "<group>"; };
 		0AE7F5451F5429D3006F09DB /* UserViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewModel.h; sourceTree = "<group>"; };
@@ -151,6 +166,8 @@
 				0A9386EE1F56CDB4003CE196 /* TwitterRequestSigner.m */,
 				0A9386EF1F56CDB4003CE196 /* TwitterRequestsManager.h */,
 				0A9386F01F56CDB4003CE196 /* TwitterRequestsManager.m */,
+				0A9386FA1F56F3C0003CE196 /* TwitterRequestParser.h */,
+				0A9386FB1F56F3C0003CE196 /* TwitterRequestParser.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -160,9 +177,17 @@
 			children = (
 				0AE7F5491F542E01006F09DB /* CommonDateFormatter.h */,
 				0AE7F54A1F542E01006F09DB /* CommonDateFormatter.m */,
+				0A9387001F56FBF4003CE196 /* ParseFieldChecker.h */,
+				0A9387011F56FBF4003CE196 /* ParseFieldChecker.m */,
 				0A9386EA1F56CD56003CE196 /* Network */,
 				0A9386E11F56C18E003CE196 /* TwitterUserSession.h */,
 				0A9386E21F56C18E003CE196 /* TwitterUserSession.m */,
+				0A9386FD1F56F775003CE196 /* CommonModel.h */,
+				0A9386FE1F56F775003CE196 /* CommonModel.m */,
+				0A9386F41F56DAA2003CE196 /* TweetModel.h */,
+				0A9386F51F56DAA2003CE196 /* TweetModel.m */,
+				0A9386F71F56DAB3003CE196 /* UserModel.h */,
+				0A9386F81F56DAB3003CE196 /* UserModel.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -320,10 +345,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A38E9DD1F5417A000542431 /* TwitterScreenRouter.m in Sources */,
+				0A9386F61F56DAA2003CE196 /* TweetModel.m in Sources */,
 				0A9386F11F56CDB4003CE196 /* CommonNetworkManager.m in Sources */,
 				0A9386F31F56CDB4003CE196 /* TwitterRequestsManager.m in Sources */,
+				0A9386FC1F56F3C0003CE196 /* TwitterRequestParser.m in Sources */,
 				0A38E9C51F5411EC00542431 /* AppDelegate.m in Sources */,
 				0A9386F21F56CDB4003CE196 /* TwitterRequestSigner.m in Sources */,
+				0A9386F91F56DAB3003CE196 /* UserModel.m in Sources */,
 				0A38E9E51F54207100542431 /* TwitterScreenPresenter.m in Sources */,
 				0A5E23031F544CD1003361A5 /* TweetTableViewCell.m in Sources */,
 				0A9386E31F56C18E003CE196 /* TwitterUserSession.m in Sources */,
@@ -332,7 +360,9 @@
 				0AE7F5471F5429D3006F09DB /* UserViewModel.m in Sources */,
 				0AE7F54B1F542E01006F09DB /* CommonDateFormatter.m in Sources */,
 				0AE7F5441F54294D006F09DB /* TweetViewModel.m in Sources */,
+				0A9386FF1F56F775003CE196 /* CommonModel.m in Sources */,
 				0A38E9C21F5411EC00542431 /* main.m in Sources */,
+				0A9387021F56FBF4003CE196 /* ParseFieldChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

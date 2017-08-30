@@ -14,9 +14,8 @@
 -(void)viewDidLoad {
     [_presenter updateModel];
     
-    [TwitterRequestsManager askTimelineWithCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
-        id JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"result %@", JSON);
+    [TwitterRequestsManager askTimelineWithCompletionHandler:^(NSArray <TweetModel*> *tweets){
+        
     }];
 }
 
