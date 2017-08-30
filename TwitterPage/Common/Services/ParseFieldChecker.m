@@ -43,11 +43,11 @@
     else return nil;
 }
 
-+(id)fieldDataForJSON:(NSDictionary*)JSON field:(NSString*)field
++(id)fieldDataForJSONfield:(id)field
 {
-    if (JSON[field])
+    if (field)
     {
-        return [[self class] fixNull:JSON[field]];
+        return [[self class] fixNull:field];
     }
     else return nil;
 }

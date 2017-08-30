@@ -11,7 +11,10 @@
 
 @interface UserModel : CommonModel
 
+@property NSString *userID;
 @property NSString *name;
+@property NSString *screenName;
 @property NSString *avatarUrlStr;
+@property NSDate *creationDate;
 
 @end

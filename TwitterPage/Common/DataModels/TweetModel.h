@@ -14,7 +14,8 @@
 
 @property NSString *tweetID;
 @property NSString *text;
-@property NSString *formattedDate;
+@property NSDate *date;
+@property BOOL favorited;
 @property UserModel *user;
 
 @end

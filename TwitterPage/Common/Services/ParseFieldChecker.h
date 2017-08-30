@@ -12,6 +12,6 @@
 
 +(NSString*)checkStringOrDecimalNumberToString:(id)checkedObject;
 +(NSNumber*)checkStringOrDecimalNumberToNumber:(id)checkedObject;
-+(id)fieldDataForJSON:(NSDictionary*)JSON field:(NSString*)field;
++(id)fieldDataForJSONfield:(id)field;
 
 @end

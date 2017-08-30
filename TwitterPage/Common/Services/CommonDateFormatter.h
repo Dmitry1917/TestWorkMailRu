@@ -11,5 +11,6 @@
 @interface CommonDateFormatter : NSObject
 
 +(NSString*)formattedTweetDate:(NSDate*)date;
++(NSDate*)dateFromServerString:(NSString*)serverString;
 
 @end
