@@ -13,9 +13,13 @@
 @implementation TwitterScreenInteractor {
     NSTimer *refreshTimer;
     int refreshCounter;
+    BOOL showAvatars;
 }
 
 -(void)viewDidLoad {
+    //получить настройки
+    showAvatars = YES;
+    
     [_presenter updateModel:nil];
     
     [self updateTimeline];
@@ -35,6 +39,7 @@
                 tweetVM.text = tweet.text;
                 tweetVM.formattedDate = [CommonDateFormatter formattedTweetDate:tweet.date];
                 tweetVM.favorited = tweet.favorited;
+                tweetVM.showAvatar = showAvatars;
                 
                 UserViewModel *userVM = [[UserViewModel alloc] init];
                 userVM.name = tweet.user.name;

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1775161F58222B00FC4BB3 /* SettingsScreenRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1775151F58222B00FC4BB3 /* SettingsScreenRouter.m */; };
+		0A1775191F58224300FC4BB3 /* SettingsScreenInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1775181F58224300FC4BB3 /* SettingsScreenInteractor.m */; };
+		0A17751C1F58225E00FC4BB3 /* SettingsScreenPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A17751B1F58225E00FC4BB3 /* SettingsScreenPresenter.m */; };
+		0A17751F1F5822A600FC4BB3 /* SettingsScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A17751E1F5822A600FC4BB3 /* SettingsScreenViewController.m */; };
+		0A1775211F5822D500FC4BB3 /* SettingsScreenStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1775201F5822D500FC4BB3 /* SettingsScreenStoryboard.storyboard */; };
 		0A38E9C21F5411EC00542431 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38E9C11F5411EC00542431 /* main.m */; };
 		0A38E9C51F5411EC00542431 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38E9C41F5411EC00542431 /* AppDelegate.m */; };
 		0A38E9CD1F5411EC00542431 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A38E9CC1F5411EC00542431 /* Assets.xcassets */; };
@@ -34,6 +39,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1775131F58220E00FC4BB3 /* SettingsScreenProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsScreenProtocols.h; sourceTree = "<group>"; };
+		0A1775141F58222B00FC4BB3 /* SettingsScreenRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsScreenRouter.h; sourceTree = "<group>"; };
+		0A1775151F58222B00FC4BB3 /* SettingsScreenRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsScreenRouter.m; sourceTree = "<group>"; };
+		0A1775171F58224300FC4BB3 /* SettingsScreenInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsScreenInteractor.h; sourceTree = "<group>"; };
+		0A1775181F58224300FC4BB3 /* SettingsScreenInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsScreenInteractor.m; sourceTree = "<group>"; };
+		0A17751A1F58225E00FC4BB3 /* SettingsScreenPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsScreenPresenter.h; sourceTree = "<group>"; };
+		0A17751B1F58225E00FC4BB3 /* SettingsScreenPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsScreenPresenter.m; sourceTree = "<group>"; };
+		0A17751D1F5822A600FC4BB3 /* SettingsScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsScreenViewController.h; sourceTree = "<group>"; };
+		0A17751E1F5822A600FC4BB3 /* SettingsScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsScreenViewController.m; sourceTree = "<group>"; };
+		0A1775201F5822D500FC4BB3 /* SettingsScreenStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsScreenStoryboard.storyboard; sourceTree = "<group>"; };
 		0A38E9BD1F5411EC00542431 /* TwitterPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A38E9C11F5411EC00542431 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0A38E9C31F5411EC00542431 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -95,6 +110,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1775121F5821D500FC4BB3 /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0A1775131F58220E00FC4BB3 /* SettingsScreenProtocols.h */,
+				0A1775141F58222B00FC4BB3 /* SettingsScreenRouter.h */,
+				0A1775151F58222B00FC4BB3 /* SettingsScreenRouter.m */,
+				0A1775171F58224300FC4BB3 /* SettingsScreenInteractor.h */,
+				0A1775181F58224300FC4BB3 /* SettingsScreenInteractor.m */,
+				0A17751A1F58225E00FC4BB3 /* SettingsScreenPresenter.h */,
+				0A17751B1F58225E00FC4BB3 /* SettingsScreenPresenter.m */,
+				0A17751D1F5822A600FC4BB3 /* SettingsScreenViewController.h */,
+				0A17751E1F5822A600FC4BB3 /* SettingsScreenViewController.m */,
+				0A1775201F5822D500FC4BB3 /* SettingsScreenStoryboard.storyboard */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
 		0A38E9B41F5411EC00542431 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +150,7 @@
 			children = (
 				0A38E9C31F5411EC00542431 /* AppDelegate.h */,
 				0A38E9C41F5411EC00542431 /* AppDelegate.m */,
+				0A1775121F5821D500FC4BB3 /* SettingsScreen */,
 				0AE7F5481F542DD9006F09DB /* Common */,
 				0A38E9D71F54171C00542431 /* TwitterScreen */,
 				0A38E9CC1F5411EC00542431 /* Assets.xcassets */,
@@ -300,6 +333,7 @@
 			files = (
 				0A38E9D01F5411EC00542431 /* LaunchScreen.storyboard in Resources */,
 				0A38E9DF1F5417C400542431 /* TwitterScreenStoryboard.storyboard in Resources */,
+				0A1775211F5822D500FC4BB3 /* SettingsScreenStoryboard.storyboard in Resources */,
 				0A38E9CD1F5411EC00542431 /* Assets.xcassets in Resources */,
 				0A5E23041F544CD1003361A5 /* TweetTableViewCell.xib in Resources */,
 			);
@@ -366,18 +400,22 @@
 				0A93870A1F570D2F003CE196 /* ParseFieldChecker.m in Sources */,
 				0A9386F31F56CDB4003CE196 /* TwitterRequestsManager.m in Sources */,
 				0A9387091F570D2F003CE196 /* CommonDateFormatter.m in Sources */,
+				0A1775191F58224300FC4BB3 /* SettingsScreenInteractor.m in Sources */,
 				0A9386FC1F56F3C0003CE196 /* TwitterRequestParser.m in Sources */,
 				0A38E9C51F5411EC00542431 /* AppDelegate.m in Sources */,
 				0A9386F21F56CDB4003CE196 /* TwitterRequestSigner.m in Sources */,
 				0A38E9E51F54207100542431 /* TwitterScreenPresenter.m in Sources */,
 				0A5E23031F544CD1003361A5 /* TweetTableViewCell.m in Sources */,
 				0A9386E31F56C18E003CE196 /* TwitterUserSession.m in Sources */,
+				0A17751C1F58225E00FC4BB3 /* SettingsScreenPresenter.m in Sources */,
 				0A38E9DA1F54177300542431 /* TwitterScreenViewController.m in Sources */,
 				0A9387121F570D3B003CE196 /* TweetModel.m in Sources */,
 				0A38E9E21F541FEF00542431 /* TwitterScreenInteractor.m in Sources */,
+				0A1775161F58222B00FC4BB3 /* SettingsScreenRouter.m in Sources */,
 				0AE7F5471F5429D3006F09DB /* UserViewModel.m in Sources */,
 				0A9387131F570D3B003CE196 /* UserModel.m in Sources */,
 				0AE7F5441F54294D006F09DB /* TweetViewModel.m in Sources */,
+				0A17751F1F5822A600FC4BB3 /* SettingsScreenViewController.m in Sources */,
 				0A38E9C21F5411EC00542431 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

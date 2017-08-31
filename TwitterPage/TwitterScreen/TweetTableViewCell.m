@@ -9,6 +9,8 @@
 #import "TweetTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#define avatarBaseWidth 35.0
+
 @implementation TweetTableViewCell
 
 - (void)awakeFromNib {
@@ -28,6 +30,7 @@
     [self.dateLabel setText:model.formattedDate];
     [self.tweetLabel setText:model.text];
     [self.favoriteButton setImage:model.favorited ? [UIImage imageNamed:@"favorite"] : [UIImage imageNamed:@"unfavorite"] forState:UIControlStateNormal];
+    self.avatarWidthConstraint.constant = model.showAvatar ? avatarBaseWidth : 0.0;
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:model.user.avatarUrlStr] placeholderImage:[UIImage imageNamed:@"avatarDefault"]];
 }
 

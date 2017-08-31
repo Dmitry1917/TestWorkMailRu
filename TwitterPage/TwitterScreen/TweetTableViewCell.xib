@@ -82,17 +82,18 @@
                     <constraint firstItem="RUC-nn-tYE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="XN6-dI-bcD"/>
                     <constraint firstItem="hYj-JU-Kdr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Y39-69-79e"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Sg3-Tb-umh" secondAttribute="trailing" constant="5" id="ZhE-za-TCX"/>
+                    <constraint firstItem="Kjf-Zf-lQY" firstAttribute="leading" secondItem="o4w-oI-mbm" secondAttribute="leading" id="avn-VK-y2J"/>
                     <constraint firstItem="Sg3-Tb-umh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RUC-nn-tYE" secondAttribute="trailing" constant="5" id="boB-Pa-vJq"/>
                     <constraint firstItem="RUC-nn-tYE" firstAttribute="leading" secondItem="ZSk-dF-mjn" secondAttribute="trailing" constant="5" id="fVk-sy-fH9"/>
                     <constraint firstItem="o4w-oI-mbm" firstAttribute="leading" secondItem="hYj-JU-Kdr" secondAttribute="trailing" constant="8" id="ftN-YX-tRJ"/>
                     <constraint firstAttribute="trailing" secondItem="o4w-oI-mbm" secondAttribute="trailing" constant="20" id="gw5-Wq-gg3"/>
-                    <constraint firstItem="Kjf-Zf-lQY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="53" id="iEe-VJ-viL"/>
                     <constraint firstItem="hYj-JU-Kdr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="reK-b2-IJ2"/>
                     <constraint firstItem="Sg3-Tb-umh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="yce-Un-AdK"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImageView" destination="hYj-JU-Kdr" id="GYV-Nb-Dbe"/>
+                <outlet property="avatarWidthConstraint" destination="WeM-sm-Gg1" id="BGN-SX-5di"/>
                 <outlet property="dateLabel" destination="Sg3-Tb-umh" id="tcc-cB-7pf"/>
                 <outlet property="favoriteButton" destination="Kjf-Zf-lQY" id="PoS-51-udm"/>
                 <outlet property="screenNameLabel" destination="RUC-nn-tYE" id="cfy-IL-TzU"/>

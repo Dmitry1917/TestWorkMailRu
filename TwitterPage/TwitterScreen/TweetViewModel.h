@@ -14,6 +14,7 @@
 @property NSString *text;
 @property NSString *formattedDate;
 @property BOOL favorited;
+@property BOOL showAvatar;
 @property UserViewModel *user;
 
 @end
