@@ -8,6 +8,7 @@
 
 #import "SettingsManager.h"
 #import "SettingsModel.h"
+#import "LocalDataManager.h"
 
 @implementation SettingsManager {
     SettingsModel *settings;
@@ -26,9 +27,9 @@
     self = [super init];
     if (self) {
         //запросим из базы
-        
-        settings = [[SettingsModel alloc] init];
-        settings.isAvatarsHidden = NO;
+        settings = [[LocalDataManager shared] getSettings];
+//        settings = [[SettingsModel alloc] init];
+//        settings.isAvatarsHidden = NO;
     }
     return self;
 }
@@ -39,6 +40,7 @@
 
 -(void)setNeedShowAvatarsInTimeline:(BOOL)needShow {
     settings.isAvatarsHidden = !needShow;
+    [[LocalDataManager shared] setSettings:settings];
     [[NSNotificationCenter defaultCenter] postNotificationName:SETTINGS_CHANGED_NOTIFICATION object:nil];
 }
 

@@ -18,6 +18,7 @@
 		0A17752F1F58435400FC4BB3 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A17752C1F58435400FC4BB3 /* UserModel.m */; };
 		0A1775321F58438500FC4BB3 /* SettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1775311F58438500FC4BB3 /* SettingsModel.m */; };
 		0A1775351F58448800FC4BB3 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1775341F58448800FC4BB3 /* SettingsManager.m */; };
+		0A1775391F586E7600FC4BB3 /* LocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1775381F586E7600FC4BB3 /* LocalDataManager.m */; };
 		0A38E9C21F5411EC00542431 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38E9C11F5411EC00542431 /* main.m */; };
 		0A38E9C51F5411EC00542431 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A38E9C41F5411EC00542431 /* AppDelegate.m */; };
 		0A38E9CD1F5411EC00542431 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A38E9CC1F5411EC00542431 /* Assets.xcassets */; };
@@ -64,6 +65,8 @@
 		0A1775311F58438500FC4BB3 /* SettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModel.m; sourceTree = "<group>"; };
 		0A1775331F58448800FC4BB3 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
 		0A1775341F58448800FC4BB3 /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
+		0A1775371F586E7600FC4BB3 /* LocalDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataManager.h; sourceTree = "<group>"; };
+		0A1775381F586E7600FC4BB3 /* LocalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDataManager.m; sourceTree = "<group>"; };
 		0A38E9BD1F5411EC00542431 /* TwitterPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A38E9C11F5411EC00542431 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0A38E9C31F5411EC00542431 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -157,6 +160,15 @@
 				0A17752C1F58435400FC4BB3 /* UserModel.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		0A1775361F586E1300FC4BB3 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				0A1775371F586E7600FC4BB3 /* LocalDataManager.h */,
+				0A1775381F586E7600FC4BB3 /* LocalDataManager.m */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 		0A38E9B41F5411EC00542431 = {
@@ -265,6 +277,7 @@
 				0A9386E21F56C18E003CE196 /* TwitterUserSession.m */,
 				0A1775331F58448800FC4BB3 /* SettingsManager.h */,
 				0A1775341F58448800FC4BB3 /* SettingsManager.m */,
+				0A1775361F586E1300FC4BB3 /* DB */,
 				0A9386EA1F56CD56003CE196 /* Network */,
 				0A9387031F570CF4003CE196 /* DataModels */,
 				0A9387041F570D13003CE196 /* Services */,
@@ -446,6 +459,7 @@
 				0A17752E1F58435400FC4BB3 /* TweetModel.m in Sources */,
 				0A17752D1F58435400FC4BB3 /* CommonModel.m in Sources */,
 				0AE7F5471F5429D3006F09DB /* UserViewModel.m in Sources */,
+				0A1775391F586E7600FC4BB3 /* LocalDataManager.m in Sources */,
 				0A1775251F5828A100FC4BB3 /* SettingsViewModel.m in Sources */,
 				0A1775351F58448800FC4BB3 /* SettingsManager.m in Sources */,
 				0AE7F5441F54294D006F09DB /* TweetViewModel.m in Sources */,

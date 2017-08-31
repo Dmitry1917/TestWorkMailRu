@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TwitterPage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>216FF343785D4603C7F0AC5831AB2B7C</key>
+		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9CDA9B2DAED68AD3B3BFA914537A0207</key>
+		<key>A36670EE433D8DCFA8FC418DDC4013CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE35F6A203670A40909A903D60625197</key>
 		<dict>
 			<key>primary</key>
 			<true/>

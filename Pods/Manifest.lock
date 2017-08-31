@@ -1,14 +1,19 @@
 PODS:
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
 
 DEPENDENCIES:
+  - FMDB
   - SDWebImage (~> 4.0)
 
 SPEC CHECKSUMS:
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: fef3ba2cde4c556be3733619c8f2f60a182b6636
+PODFILE CHECKSUM: 39ae0bcc611bf24347e5d62466576c4111d4ab70
 
 COCOAPODS: 1.2.1
