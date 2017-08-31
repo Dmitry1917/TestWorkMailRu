@@ -41,6 +41,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUk-Kx-iuK">
+                                <rect key="frame" x="313" y="613" width="62" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="IjS-wL-Dcc"/>
+                                    <constraint firstAttribute="height" constant="54" id="LjR-S0-5AZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <color key="textColor" red="1" green="0.31111653645833331" blue="0.14466688368055555" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -48,10 +58,19 @@
                             <constraint firstItem="Nn9-xg-BvW" firstAttribute="top" secondItem="fEp-9n-kUo" secondAttribute="bottom" id="AXH-L8-qgh"/>
                             <constraint firstAttribute="trailing" secondItem="fEp-9n-kUo" secondAttribute="trailing" id="Ksw-iT-Qpd"/>
                             <constraint firstItem="fEp-9n-kUo" firstAttribute="leading" secondItem="Psc-wH-zY8" secondAttribute="leading" id="S1G-ML-YjC"/>
+                            <constraint firstItem="Nn9-xg-BvW" firstAttribute="top" secondItem="hUk-Kx-iuK" secondAttribute="bottom" id="hLK-BP-jm5"/>
+                            <constraint firstAttribute="trailing" secondItem="hUk-Kx-iuK" secondAttribute="trailing" id="qtg-wk-JmV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="OFW-P2-G4t"/>
+                    <navigationItem key="navigationItem" id="OFW-P2-G4t">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="78N-Ml-5Yd">
+                            <connections>
+                                <action selector="settingsButtonTouched:" destination="Sxk-g7-4K3" id="dJV-Ki-oTq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="timerLabel" destination="hUk-Kx-iuK" id="o2z-g0-N9U"/>
                         <outlet property="tweetsTableView" destination="fEp-9n-kUo" id="aji-KZ-3o0"/>
                     </connections>
                 </viewController>

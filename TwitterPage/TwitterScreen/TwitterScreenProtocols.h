@@ -13,18 +13,21 @@
 @protocol TwitterScreenVIPView <NSObject>
 
 -(void)updateModel:(NSArray <TweetViewModel*> *)tweets;
+-(void)updateCounter:(NSString*)counterText;
 
 @end
 
 @protocol TwitterScreenVIPInteractor <NSObject>
 
 -(void)viewDidLoad;
+-(void)viewDidDismissedOrPoped;
 
 @end
 
 @protocol TwitterScreenVIPPresenter <NSObject>
 
 -(void)updateModel:(NSArray <TweetViewModel*> *)tweets;
+-(void)updateCounter:(int)number;
 
 @end
 

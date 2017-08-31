@@ -10,11 +10,18 @@
 #import "TwitterRequestsManager.h"
 #import "CommonDateFormatter.h"
 
-@implementation TwitterScreenInteractor
+@implementation TwitterScreenInteractor {
+    NSTimer *refreshTimer;
+    int refreshCounter;
+}
 
 -(void)viewDidLoad {
     [_presenter updateModel:nil];
     
+    [self updateTimeline];
+}
+
+-(void)updateTimeline {
     [TwitterRequestsManager askTimelineWithCompletionHandler:^(NSArray <TweetModel*> *tweets){
         if (tweets.count > 0) {
             
@@ -43,7 +50,30 @@
         else {
             
         }
+        
+        [self setupCounterTimer];
     }];
+}
+
+-(void)setupCounterTimer {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        refreshCounter = 60;
+        refreshTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
+    });
+}
+
+-(void)timerTick {
+    refreshCounter--;
+    if (refreshCounter == 0)
+    {
+        [refreshTimer invalidate];
+        [self updateTimeline];
+    }
+    [self.presenter updateCounter:refreshCounter];
+}
+
+-(void)viewDidDismissedOrPoped {
+    [refreshTimer invalidate];
 }
 
 @end

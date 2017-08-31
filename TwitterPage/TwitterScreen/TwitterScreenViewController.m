@@ -13,6 +13,7 @@
 
 @interface TwitterScreenViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tweetsTableView;
+@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @end
 
 @implementation TwitterScreenViewController
@@ -39,11 +40,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)didMoveToParentViewController:(UIViewController *)parent {
+    if (!parent) [self.interactor viewDidDismissedOrPoped];
+}
+
 -(void)updateModel:(NSArray<TweetViewModel *> *)tweets {
     tweetsModel = tweets;
     //NSLog(@"tweets %@", tweets);
     
     [self.tweetsTableView reloadData];
+}
+
+-(void)updateCounter:(NSString *)counterText {
+    [self.timerLabel setText:counterText];
 }
 
 #pragma mark UITableViewDelegate, UITableViewDataSource
@@ -58,6 +67,10 @@
     [cell fillWithViewModel:modelForCell];
     
     return cell;
+}
+
+- (IBAction)settingsButtonTouched:(id)sender {
+    
 }
 
 @end

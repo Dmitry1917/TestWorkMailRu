@@ -46,4 +46,10 @@
     });
 }
 
+-(void)updateCounter:(int)number {
+    NSString *counterText = @"";
+    if (number > 0) counterText = [NSString stringWithFormat:@"%d", number];
+    [self.view updateCounter:counterText];
+}
+
 @end
