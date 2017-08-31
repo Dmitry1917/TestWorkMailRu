@@ -8,6 +8,25 @@
 
 #ifndef SettingsScreenProtocols_h
 #define SettingsScreenProtocols_h
+#import "SettingsViewModel.h"
 
+@protocol SettingsScreenVIPView <NSObject>
+
+-(void)updateModel:(SettingsViewModel *)settings;
+
+@end
+
+@protocol SettingsScreenVIPInteractor <NSObject>
+
+-(void)viewDidLoad;
+-(void)setAvatarHidden:(BOOL)isHidden;
+
+@end
+
+@protocol SettingsScreenVIPPresenter <NSObject>
+
+-(void)updateModel:(SettingsViewModel*)settings;
+
+@end
 
 #endif /* SettingsScreenProtocols_h */

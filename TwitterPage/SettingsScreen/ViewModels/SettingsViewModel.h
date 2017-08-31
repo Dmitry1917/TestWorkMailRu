@@ -1,5 +1,5 @@
 //
-//  SettingsScreenRouter.h
+//  SettingsViewModel.h
 //  TwitterPage
 //
 //  Created by DMITRY SINYOV on 31.08.17.
@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UIKit/UIKit.h"
 
-@interface SettingsScreenRouter : NSObject
+@interface SettingsViewModel : NSObject
 
-+(UIViewController*)createSettingsScreenModule;
+@property BOOL showAvatars;
 
 @end

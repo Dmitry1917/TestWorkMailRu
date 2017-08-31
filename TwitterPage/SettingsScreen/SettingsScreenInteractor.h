@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SettingsScreenProtocols.h"
 
-@interface SettingsScreenInteractor : NSObject
+@interface SettingsScreenInteractor : NSObject <SettingsScreenVIPInteractor>
+
+@property(nonatomic, strong) NSObject <SettingsScreenVIPPresenter> *presenter;
 
 @end

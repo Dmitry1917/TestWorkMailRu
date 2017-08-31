@@ -11,6 +11,8 @@
 #import "TwitterScreenInteractor.h"
 #import "TwitterScreenPresenter.h"
 
+#import "SettingsScreenRouter.h"
+
 @implementation TwitterScreenRouter
 
 +(UINavigationController*)createTwitterScreenModule {
@@ -26,6 +28,15 @@
     presenter.view = view;
     
     return navigationController;
+}
+
++(void)openSettingsFromViewController:(UIViewController*)sourceVC {
+    if (!sourceVC) return;
+    UIViewController *settingsScreen = [SettingsScreenRouter createSettingsScreenModule];
+    if (settingsScreen) {
+        if ([sourceVC isKindOfClass:[UINavigationController class]]) [(UINavigationController*)sourceVC pushViewController:settingsScreen animated:YES];
+        else if (sourceVC.navigationController) [sourceVC.navigationController pushViewController:settingsScreen animated:YES];
+    }
 }
 
 @end

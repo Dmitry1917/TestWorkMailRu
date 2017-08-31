@@ -7,7 +7,18 @@
 //
 
 #import "SettingsScreenInteractor.h"
+#import "SettingsManager.h"
 
 @implementation SettingsScreenInteractor
+
+-(void)viewDidLoad {
+    SettingsViewModel *settingsVM = [[SettingsViewModel alloc] init];
+    settingsVM.showAvatars = [[SettingsManager shared] needShowAvatarsInTimeline];
+    [self.presenter updateModel:settingsVM];
+}
+
+-(void)setAvatarHidden:(BOOL)isHidden {
+    [[SettingsManager shared] setNeedShowAvatarsInTimeline:!isHidden];
+}
 
 @end

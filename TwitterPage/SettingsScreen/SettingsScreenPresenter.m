@@ -10,4 +10,10 @@
 
 @implementation SettingsScreenPresenter
 
+-(void)updateModel:(SettingsViewModel *)settings {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.view updateModel:settings];
+    });
+}
+
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SettingsScreenProtocols.h"
 
-@interface SettingsScreenViewController : UIViewController
+@interface SettingsScreenViewController : UIViewController <SettingsScreenVIPView>
+
+@property(nonatomic, strong) NSObject <SettingsScreenVIPInteractor> *interactor;
 
 @end

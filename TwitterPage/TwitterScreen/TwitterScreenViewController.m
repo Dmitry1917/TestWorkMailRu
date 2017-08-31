@@ -9,6 +9,8 @@
 #import "TwitterScreenViewController.h"
 #import "TweetTableViewCell.h"
 
+#import "TwitterScreenRouter.h"
+
 #define defaultCellHeight 90.0
 
 @interface TwitterScreenViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -32,7 +34,7 @@
     self.tweetsTableView.rowHeight = UITableViewAutomaticDimension;
     self.tweetsTableView.estimatedRowHeight = defaultCellHeight;
     
-    [_interactor viewDidLoad];
+    [self.interactor viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,7 +72,7 @@
 }
 
 - (IBAction)settingsButtonTouched:(id)sender {
-    
+    [TwitterScreenRouter openSettingsFromViewController:self];
 }
 
 @end

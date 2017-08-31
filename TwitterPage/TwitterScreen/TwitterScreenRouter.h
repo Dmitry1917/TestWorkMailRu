@@ -12,5 +12,6 @@
 @interface TwitterScreenRouter : NSObject
 
 +(UINavigationController*)createTwitterScreenModule;
++(void)openSettingsFromViewController:(UIViewController*)sourceVC;
 
 @end
