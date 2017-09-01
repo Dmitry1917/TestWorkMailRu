@@ -19,7 +19,7 @@
 @protocol SettingsScreenVIPInteractor <NSObject>
 
 -(void)viewDidLoad;
--(void)setAvatarHidden:(BOOL)isHidden;
+-(void)setAvatarsHidden:(BOOL)isHidden;
 
 @end
 

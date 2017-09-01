@@ -27,8 +27,7 @@
     
     [[CommonNetworkManager shared] executeRequest:request withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
-        if (error)
-        {
+        if (error) {
             completionHandler(nil);
             return;
         }
@@ -51,7 +50,6 @@
                 completionHandler(nil);
             }
         }
-        
     }];
 }
 

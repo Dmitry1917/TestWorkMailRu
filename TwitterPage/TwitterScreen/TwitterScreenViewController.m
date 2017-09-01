@@ -48,7 +48,6 @@
 
 -(void)updateModel:(NSArray<TweetViewModel *> *)tweets {
     tweetsModel = tweets;
-    //NSLog(@"tweets %@", tweets);
     
     [self.tweetsTableView reloadData];
 }

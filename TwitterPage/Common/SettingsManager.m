@@ -26,10 +26,11 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
-        //запросим из базы
         settings = [[LocalDataManager shared] getSettings];
-//        settings = [[SettingsModel alloc] init];
-//        settings.isAvatarsHidden = NO;
+        if (!settings) {
+            settings = [[SettingsModel alloc] init];
+            settings.isAvatarsHidden = NO;
+        }
     }
     return self;
 }

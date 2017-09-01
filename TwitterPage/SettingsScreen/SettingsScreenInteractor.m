@@ -17,7 +17,7 @@
     [self.presenter updateModel:settingsVM];
 }
 
--(void)setAvatarHidden:(BOOL)isHidden {
+-(void)setAvatarsHidden:(BOOL)isHidden {
     [[SettingsManager shared] setNeedShowAvatarsInTimeline:!isHidden];
 }
 

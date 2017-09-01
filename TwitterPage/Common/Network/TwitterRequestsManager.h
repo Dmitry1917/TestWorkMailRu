@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TweetModel.h"
+@class TweetModel;
 
 @interface TwitterRequestsManager : NSObject
 

@@ -126,8 +126,6 @@
     return oauthSignature;
 }
 
-
-
 +(NSString *)st_signString:(NSString*)string HmacSHA1WithKey:(NSString *)key {
     
     unsigned char buf[CC_SHA1_DIGEST_LENGTH];
