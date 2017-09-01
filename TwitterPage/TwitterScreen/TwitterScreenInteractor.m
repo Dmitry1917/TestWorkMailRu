@@ -10,6 +10,7 @@
 #import "TwitterRequestsManager.h"
 #import "CommonDateFormatter.h"
 #import "SettingsManager.h"
+#import "LocalDataManager.h"
 
 @implementation TwitterScreenInteractor {
     NSTimer *refreshTimer;
@@ -34,19 +35,21 @@
 -(void)viewDidLoad {
     //получить настройки
     showAvatars = [[SettingsManager shared] needShowAvatarsInTimeline];
+    currentTweets = [[LocalDataManager shared] getSavedTweets];
     
-    [_presenter updateModel:nil];
+    [_presenter updateModel:[self prepareViewModels]];
     
     [self updateTimeline];
 }
 
+#pragma mark Можно не заменять, а пополнять список твитов загруженными, но для определения точного механизма требуется информация об экране и его функционале
 -(void)updateTimeline {
     [TwitterRequestsManager askTimelineWithCompletionHandler:^(NSArray <TweetModel*> *tweets){
         if (tweets.count > 0) {
             
             currentTweets = tweets;
             //сохранить загруженное
-            
+            [[LocalDataManager shared] addOrReplaceTweets:tweets];
             
             //отправить на показ
             [self.presenter updateModel:[self prepareViewModels]];

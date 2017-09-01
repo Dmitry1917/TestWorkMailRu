@@ -11,6 +11,7 @@
 #import "FMDatabase.h"
 
 #import "SettingsModel.h"
+#import "TweetModel.h"
 
 @implementation LocalDataManager {
     FMDatabaseQueue *dbQueue;
@@ -37,11 +38,10 @@
     dbQueue = [FMDatabaseQueue databaseQueueWithPath:pathToDB];
     saveDBQueue = dispatch_queue_create("saveDBQueue", DISPATCH_QUEUE_SERIAL);
     
-    dispatch_async(saveDBQueue, ^{
-        [dbQueue inDatabase:^(FMDatabase *db){
-            [self createTablesIfNotExist:db];
-        }];
-    });
+    //обходимся без отдельной queue тут, так как иначе есть шанс начать запросы до того, как созданы таблицы
+    [dbQueue inDatabase:^(FMDatabase *db){
+        [self createTablesIfNotExist:db];
+    }];
     
     return self;
 }
@@ -66,7 +66,7 @@
         [database executeUpdate:@"CREATE TABLE Settings (id integer primary key, showAvatars integer)"];
         [database executeUpdate:@"INSERT INTO Settings (id, showAvatars) VALUES (1, 1);"];
         
-        [database executeUpdate:@"CREATE TABLE Tweets (id integer primary key autoincrement, showAvatars integer)"];
+        [database executeUpdate:@"CREATE TABLE Tweets (tweetid text primary key, tweettext text, date integer, favorited integer, userid text)"];
         [database executeUpdate:@"CREATE TABLE Users (userid text primary key, name text, screenname text, avatarurl text, creationdate integer)"];
     }
     
@@ -86,7 +86,7 @@
         {
             long showAvatars = [s longForColumn:@"showAvatars"];
             
-            settings.isAvatarsHidden = !showAvatars;
+            settings.isAvatarsHidden = (showAvatars == 0);
         }
         
         [database close];
@@ -95,7 +95,6 @@
     return settings;
 }
 -(void)setSettings:(SettingsModel *)newSettings {
-    
     dispatch_async(saveDBQueue, ^{
         [dbQueue inDatabase:^(FMDatabase *database){
             if (![database open]) {
@@ -104,6 +103,65 @@
             }
             
             [database executeUpdate:[NSString stringWithFormat:@"REPLACE INTO Settings (id, showAvatars) VALUES (1, %d);", !newSettings.isAvatarsHidden]];
+            
+            [database close];
+        }];
+    });
+}
+
+#pragma mark работу с запросами можно оптимизировать
+-(NSArray<TweetModel*>*)getSavedTweets {
+    NSMutableArray <TweetModel*> *tweets = [NSMutableArray array];
+    [dbQueue inDatabase:^(FMDatabase *database){
+        if (![database open]) {
+            NSLog(@"database cant be opened");
+            return;
+        }
+        //tweetid text primary key, tweettext text, date integer, favorited integer, userid text
+        //userid text primary key, name text, screenname text, avatarurl text, creationdate integer
+        FMResultSet *setTweets = [database executeQuery:@"SELECT * FROM Tweets"];
+        while ([setTweets next])
+        {
+            TweetModel *tweet = [[TweetModel alloc] init];
+            tweet.tweetID = [setTweets stringForColumn:@"tweetid"];
+            tweet.text = [setTweets stringForColumn:@"tweettext"];
+            tweet.date = [NSDate dateWithTimeIntervalSince1970:[setTweets longForColumn:@"date"]];
+            tweet.favorited = ([setTweets longForColumn:@"favorited"] != 0);
+            
+            NSString *userID = [setTweets stringForColumn:@"userid"];
+            
+            UserModel *user = [[UserModel alloc] init];
+            
+            if (userID) {
+                FMResultSet *setUsers = [database executeQuery:[NSString stringWithFormat:@"SELECT * FROM Users WHERE userid=%@", userID]];
+                while ([setUsers next]) {//userid - primary key, поэтому результат один
+                    user.userID = userID;
+                    user.name = [setUsers stringForColumn:@"name"];
+                    user.screenName = [setUsers stringForColumn:@"screenname"];
+                    user.avatarUrlStr = [setUsers stringForColumn:@"avatarurl"];
+                    user.creationDate = [NSDate dateWithTimeIntervalSince1970:[setUsers longForColumn:@"creationdate"]];
+                }
+            }
+            tweet.user = user;
+            [tweets addObject:tweet];
+        }
+        [database close];
+    }];
+    
+    return tweets;
+}
+-(void)addOrReplaceTweets:(NSArray<TweetModel *> *)newTweets {
+    dispatch_async(saveDBQueue, ^{
+        [dbQueue inDatabase:^(FMDatabase *database){
+            if (![database open]) {
+                NSLog(@"database cant be opened");
+                return;
+            }
+            
+            for (TweetModel *tweet in newTweets) {
+                [database executeUpdate:[NSString stringWithFormat:@"REPLACE INTO Tweets (tweetid, tweettext, date, favorited, userid) VALUES ('%@', '%@', %ld, %ld, '%@');", tweet.tweetID, tweet.text, (long)tweet.date.timeIntervalSince1970, (long)tweet.favorited, tweet.user.userID]];
+                [database executeUpdate:[NSString stringWithFormat:@"REPLACE INTO Users (userid, name, screenname, avatarurl, creationdate) VALUES ('%@', '%@', '%@', '%@', %ld);", tweet.user.userID, tweet.user.name, tweet.user.screenName, tweet.user.avatarUrlStr, (long)tweet.user.creationDate.timeIntervalSince1970]];
+            }
             
             [database close];
         }];

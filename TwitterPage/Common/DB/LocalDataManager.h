@@ -9,11 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @class SettingsModel;
+@class TweetModel;
 
 @interface LocalDataManager : NSObject
 
 +(instancetype)shared;
 -(SettingsModel*)getSettings;
 -(void)setSettings:(SettingsModel*)newSettings;
+
+-(NSArray<TweetModel*>*)getSavedTweets;
+-(void)addOrReplaceTweets:(NSArray<TweetModel*>*)newTweets;
 
 @end

@@ -39,7 +39,7 @@
             
             if (httpResponse.statusCode == 200) {
                 id JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSLog(@"result %@", JSON);
+                //NSLog(@"result %@", JSON);
                 
                 completionHandler([TwitterRequestParser parseTimeline:JSON]);
             }
