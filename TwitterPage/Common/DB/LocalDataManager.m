@@ -22,9 +22,7 @@
     static LocalDataManager *_sharedInstance;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        
         _sharedInstance = [[LocalDataManager alloc] init];
-        
     });
     return _sharedInstance;
 }
@@ -34,77 +32,61 @@
     
     NSString *pathToDocs = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject].absoluteString;
     NSString *pathToDB = [pathToDocs stringByAppendingPathComponent:@"database"];
-    
     dbQueue = [FMDatabaseQueue databaseQueueWithPath:pathToDB];
     saveDBQueue = dispatch_queue_create("saveDBQueue", DISPATCH_QUEUE_SERIAL);
-    
-    //обходимся без отдельной queue тут, так как иначе есть шанс начать запросы до того, как созданы таблицы
-    [dbQueue inDatabase:^(FMDatabase *db){
-        [self createTablesIfNotExist:db];
-    }];
-    
+    [self createTablesIfNotExist];
     return self;
 }
 
--(void)createTablesIfNotExist:(FMDatabase*)database {
-    if (![database open]) {
-        NSLog(@"database cant be opened");
-        return;
-    }
-    
-    BOOL tablesExist = YES;
-    FMResultSet *existingSettingsSet = [database executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='Settings'"];
-    //если искали таблицу по имени и результат не пустой, значит она точно существует и наоборот
-    if (![existingSettingsSet next]) tablesExist = NO;
-    FMResultSet *existingTweetsSet = [database executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='Tweets'"];
-    if (![existingTweetsSet next]) tablesExist = NO;
-    FMResultSet *existingUsersSet = [database executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='Users'"];
-    if (![existingUsersSet next]) tablesExist = NO;
-    
-    if (!tablesExist)
-    {
-        [database executeUpdate:@"CREATE TABLE Settings (id integer primary key, showAvatars integer)"];
-        [database executeUpdate:@"INSERT INTO Settings (id, showAvatars) VALUES (1, 1);"];
-        
-        [database executeUpdate:@"CREATE TABLE Tweets (tweetid text primary key, tweettext text, date integer, favorited integer, userid text)"];
-        [database executeUpdate:@"CREATE TABLE Users (userid text primary key, name text, screenname text, avatarurl text, creationdate integer)"];
-    }
-    
-    [database close];
-}
-
--(SettingsModel*)getSettings {
-    SettingsModel *settings = [[SettingsModel alloc] init];
+-(void)executeBlockForDatabase:(void (^)(FMDatabase *database))blockForDB {
+    if (!blockForDB) return;
     [dbQueue inDatabase:^(FMDatabase *database){
         if (![database open]) {
             NSLog(@"database cant be opened");
             return;
         }
+        blockForDB(database);
+        [database close];
+    }];
+}
+
+-(void)createTablesIfNotExist {//обходимся без отдельной queue тут, так как иначе есть шанс начать запросы до того, как созданы таблицы
+    [self executeBlockForDatabase:^(FMDatabase *database){
+        BOOL tablesExist = YES;
+        FMResultSet *existingSettingsSet = [database executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='Settings'"];
+        //если искали таблицу по имени и результат не пустой, значит она точно существует и наоборот
+        if (![existingSettingsSet next]) tablesExist = NO;
+        FMResultSet *existingTweetsSet = [database executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='Tweets'"];
+        if (![existingTweetsSet next]) tablesExist = NO;
+        FMResultSet *existingUsersSet = [database executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='Users'"];
+        if (![existingUsersSet next]) tablesExist = NO;
         
+        if (!tablesExist) {
+            [database executeUpdate:@"CREATE TABLE Settings (id integer primary key, showAvatars integer)"];
+            [database executeUpdate:@"INSERT INTO Settings (id, showAvatars) VALUES (1, 1);"];
+            
+            [database executeUpdate:@"CREATE TABLE Tweets (tweetid text primary key, tweettext text, date integer, favorited integer, userid text)"];
+            [database executeUpdate:@"CREATE TABLE Users (userid text primary key, name text, screenname text, avatarurl text, creationdate integer)"];
+        }
+    }];
+}
+
+-(SettingsModel*)getSettings {
+    SettingsModel *settings = [[SettingsModel alloc] init];
+    [self executeBlockForDatabase:^(FMDatabase *database){
         FMResultSet *s = [database executeQuery:@"SELECT * FROM Settings"];
         while ([s next])//next вызывать всегда - если сразу вернёт NO, значит ничего не нашёл
         {
             long showAvatars = [s longForColumn:@"showAvatars"];
-            
             settings.isAvatarsHidden = (showAvatars == 0);
         }
-        
-        [database close];
     }];
-    
     return settings;
 }
 -(void)setSettings:(SettingsModel *)newSettings {
     dispatch_async(saveDBQueue, ^{
-        [dbQueue inDatabase:^(FMDatabase *database){
-            if (![database open]) {
-                NSLog(@"database cant be opened");
-                return;
-            }
-            
+        [self executeBlockForDatabase:^(FMDatabase *database){
             [database executeUpdate:[NSString stringWithFormat:@"REPLACE INTO Settings (id, showAvatars) VALUES (1, %d);", !newSettings.isAvatarsHidden]];
-            
-            [database close];
         }];
     });
 }
@@ -112,13 +94,7 @@
 #pragma mark работу с запросами можно оптимизировать
 -(NSArray<TweetModel*>*)getSavedTweets {
     NSMutableArray <TweetModel*> *tweets = [NSMutableArray array];
-    [dbQueue inDatabase:^(FMDatabase *database){
-        if (![database open]) {
-            NSLog(@"database cant be opened");
-            return;
-        }
-        //tweetid text primary key, tweettext text, date integer, favorited integer, userid text
-        //userid text primary key, name text, screenname text, avatarurl text, creationdate integer
+    [self executeBlockForDatabase:^(FMDatabase *database){
         FMResultSet *setTweets = [database executeQuery:@"SELECT * FROM Tweets"];
         while ([setTweets next])
         {
@@ -145,67 +121,19 @@
             tweet.user = user;
             [tweets addObject:tweet];
         }
-        [database close];
     }];
     
     return tweets;
 }
 -(void)addOrReplaceTweets:(NSArray<TweetModel *> *)newTweets {
     dispatch_async(saveDBQueue, ^{
-        [dbQueue inDatabase:^(FMDatabase *database){
-            if (![database open]) {
-                NSLog(@"database cant be opened");
-                return;
-            }
-            
+        [self executeBlockForDatabase:^(FMDatabase *database){
             for (TweetModel *tweet in newTweets) {
                 [database executeUpdate:[NSString stringWithFormat:@"REPLACE INTO Tweets (tweetid, tweettext, date, favorited, userid) VALUES ('%@', '%@', %ld, %ld, '%@');", tweet.tweetID, tweet.text, (long)tweet.date.timeIntervalSince1970, (long)tweet.favorited, tweet.user.userID]];
                 [database executeUpdate:[NSString stringWithFormat:@"REPLACE INTO Users (userid, name, screenname, avatarurl, creationdate) VALUES ('%@', '%@', '%@', '%@', %ld);", tweet.user.userID, tweet.user.name, tweet.user.screenName, tweet.user.avatarUrlStr, (long)tweet.user.creationDate.timeIntervalSince1970]];
             }
-            
-            [database close];
         }];
     });
 }
 
-/*
-- (void)makeRequestsWithDatabase:(FMDatabase*)database
-{
-    if (![database open])
-    {
-        database = nil;
-        NSLog(@"database cant be opened");
-    }
-    
-    BOOL tableExist = NO;
-    FMResultSet *existingSet = [database executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='userTable'"];
-    if ([existingSet next])
-    {
-        tableExist = YES;//если искали таблицу по имени и результат не пустой, значит она точно существует
-    }
-    
-    if (tableExist)
-    {
-        FMResultSet *s = [database executeQuery:@"SELECT * FROM userTable"];
-        while ([s next])//next вызывать всегда - если сразу вернёт NO, значит ничего не нашёл
-        {
-            NSString* name = [s stringForColumn:@"name"];
-            long number = [s longForColumn:@"number"];
-            
-            NSLog(@"name %@, number %ld", name, number);
-        }
-    }
-    else
-    {
-        BOOL createDbResult = [database executeUpdate:@"CREATE TABLE userTable (id integer primary key autoincrement, name text, number integer)"];
-        if (createDbResult)
-        {
-            BOOL insertResult = [database executeUpdate:@"INSERT INTO userTable (name, number) VALUES ('name1', 10);"];
-            NSLog(@"insertResult %ld", (long)insertResult);
-        }
-    }
-    
-    [database close];
-}
-*/
 @end
