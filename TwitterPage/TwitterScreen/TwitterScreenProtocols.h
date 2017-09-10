@@ -8,7 +8,9 @@
 
 #ifndef TwitterScreenProtocols_h
 #define TwitterScreenProtocols_h
-#import "TweetViewModel.h"
+
+@class TweetPONSOModel;
+@class TweetViewModel;
 
 @protocol TwitterScreenVIPView <NSObject>
 
@@ -26,7 +28,7 @@
 
 @protocol TwitterScreenVIPPresenter <NSObject>
 
--(void)updateModel:(NSArray <TweetViewModel*> *)tweets;
+-(void)updateModel:(NSArray <TweetPONSOModel*> *)tweets;
 -(void)updateCounter:(int)number;
 
 @end

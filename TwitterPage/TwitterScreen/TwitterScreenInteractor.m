@@ -12,6 +12,7 @@
 #import "SettingsManager.h"
 #import "LocalDataManager.h"
 #import "TweetModel.h"
+#import "TweetPONSOModel.h"
 
 @implementation TwitterScreenInteractor {
     NSTimer *refreshTimer;
@@ -37,7 +38,7 @@
     showAvatars = [[SettingsManager shared] needShowAvatarsInTimeline];
     currentTweets = [[LocalDataManager shared] getSavedTweets];
     
-    [_presenter updateModel:[self prepareViewModels]];
+    [_presenter updateModel:[self preparePONSOModels]];
     
     [self updateTimeline];
 }
@@ -52,7 +53,7 @@
             [[LocalDataManager shared] addOrReplaceTweets:tweets];
             
             //отправить на показ
-            [self.presenter updateModel:[self prepareViewModels]];
+            [self.presenter updateModel:[self preparePONSOModels]];
         }
         else {
             
@@ -62,22 +63,22 @@
     }];
 }
 
--(NSArray <TweetViewModel*>*)prepareViewModels {
-    NSMutableArray <TweetViewModel*>* tweetViewModels = [NSMutableArray array];
+-(NSArray <TweetPONSOModel*>*)preparePONSOModels {
+    NSMutableArray <TweetPONSOModel*>* tweetViewModels = [NSMutableArray array];
     for (TweetModel *tweet in currentTweets) {
-        TweetViewModel *tweetVM = [[TweetViewModel alloc] init];
-        tweetVM.text = tweet.text;
-        tweetVM.formattedDate = [CommonDateFormatter formattedTweetDate:tweet.date];
-        tweetVM.favorited = tweet.favorited;
-        tweetVM.showAvatar = showAvatars;
+        TweetPONSOModel *tweetPM = [[TweetPONSOModel alloc] init];
+        tweetPM.text = tweet.text;
+        tweetPM.date = tweet.date;
+        tweetPM.favorited = tweet.favorited;
+        tweetPM.showAvatar = showAvatars;
         
-        UserViewModel *userVM = [[UserViewModel alloc] init];
-        userVM.name = tweet.user.name;
-        userVM.screenName = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
-        userVM.avatarUrlStr = tweet.user.avatarUrlStr;
+        UserPONSOModel *userPM = [[UserPONSOModel alloc] init];
+        userPM.name = tweet.user.name;
+        userPM.screenName = tweet.user.screenName;
+        userPM.avatarUrlStr = tweet.user.avatarUrlStr;
         
-        tweetVM.user = userVM;
-        [tweetViewModels addObject:tweetVM];
+        tweetPM.user = userPM;
+        [tweetViewModels addObject:tweetPM];
     }
     return tweetViewModels;
 }
@@ -105,7 +106,7 @@
 
 -(void)settingsChanged {
     showAvatars = [[SettingsManager shared] needShowAvatarsInTimeline];
-    [self.presenter updateModel:[self prepareViewModels]];
+    [self.presenter updateModel:[self preparePONSOModels]];
 }
 
 @end
