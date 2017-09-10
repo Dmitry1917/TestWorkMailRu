@@ -6,6 +6,8 @@
 //  Copyright © 2017 DMITRY SINYOV. All rights reserved.
 //
 
+#pragma mark Взято из STTwitter
+
 #import <Foundation/Foundation.h>
 
 @interface TwitterRequestSigner : NSObject
