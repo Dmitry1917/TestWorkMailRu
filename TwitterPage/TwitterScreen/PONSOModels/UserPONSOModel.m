@@ -10,4 +10,14 @@
 
 @implementation UserPONSOModel
 
+-(instancetype)initWithName:(NSString *)name screenName:(NSString *)screenName avatarUrlStr:(NSString *)avatarUrlStr {
+    self = [super init];
+    if (self) {
+        _name = name;
+        _screenName = screenName;
+        _avatarUrlStr = avatarUrlStr;
+    }
+    return self;
+}
+
 @end

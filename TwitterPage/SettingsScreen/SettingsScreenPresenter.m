@@ -7,12 +7,15 @@
 //
 
 #import "SettingsScreenPresenter.h"
+#import "SettingsPONSOModel.h"
+#import "SettingsViewModel.h"
 
 @implementation SettingsScreenPresenter
 
--(void)updateModel:(SettingsViewModel *)settings {
+-(void)updateModel:(SettingsPONSOModel *)settings {
+    SettingsViewModel *settingsVM = [[SettingsViewModel alloc] initWithShowAvatars:settings.showAvatars];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.view updateModel:settings];
+        [self.view updateModel:settingsVM];
     });
 }
 

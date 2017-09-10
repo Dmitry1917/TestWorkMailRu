@@ -7,6 +7,7 @@
 //
 
 #import "SettingsScreenViewController.h"
+#import "SettingsViewModel.h"
 
 @interface SettingsScreenViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *showAvatarsLabel;

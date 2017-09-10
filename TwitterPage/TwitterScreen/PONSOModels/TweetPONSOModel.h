@@ -11,10 +11,12 @@
 
 @interface TweetPONSOModel : NSObject
 
-@property NSString *text;
-@property NSDate *date;
-@property BOOL favorited;
-@property BOOL showAvatar;
-@property UserPONSOModel *user;
+@property(nonatomic, readonly) NSString *text;
+@property(nonatomic, readonly) NSDate *date;
+@property(nonatomic, readonly) BOOL favorited;
+@property(nonatomic, readonly) BOOL showAvatar;
+@property(nonatomic, readonly) UserPONSOModel *user;
+
+-(instancetype)initWithText:(NSString*)text date:(NSDate*)date favorited:(BOOL)favorited showAvatar:(BOOL)showAvatar user:(UserPONSOModel*)user;
 
 @end

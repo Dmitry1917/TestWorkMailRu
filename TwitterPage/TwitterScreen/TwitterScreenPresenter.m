@@ -29,18 +29,8 @@
 -(NSArray <TweetViewModel*>*)prepareViewModelsFromPONSO:(NSArray <TweetPONSOModel*> *)tweetsPONSO {
     NSMutableArray <TweetViewModel*>* tweetViewModels = [NSMutableArray array];
     for (TweetPONSOModel *tweet in tweetsPONSO) {
-        TweetViewModel *tweetVM = [[TweetViewModel alloc] init];
-        tweetVM.text = tweet.text;
-        tweetVM.formattedDate = [CommonDateFormatter formattedTweetDate:tweet.date];
-        tweetVM.favorited = tweet.favorited;
-        tweetVM.showAvatar = tweet.showAvatar;
-        
-        UserViewModel *userVM = [[UserViewModel alloc] init];
-        userVM.name = tweet.user.name;
-        userVM.screenName = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
-        userVM.avatarUrlStr = tweet.user.avatarUrlStr;
-        
-        tweetVM.user = userVM;
+        UserViewModel *userVM = [[UserViewModel alloc] initWithName:tweet.user.name screenName:[NSString stringWithFormat:@"@%@", tweet.user.screenName] avatarUrlStr:tweet.user.avatarUrlStr];
+        TweetViewModel *tweetVM = [[TweetViewModel alloc] initWithText:tweet.text formattedDate:[CommonDateFormatter formattedTweetDate:tweet.date] favorited:tweet.favorited showAvatar:tweet.showAvatar user:userVM];
         [tweetViewModels addObject:tweetVM];
     }
     return tweetViewModels;

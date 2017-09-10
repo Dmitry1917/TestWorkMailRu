@@ -8,7 +8,9 @@
 
 #ifndef SettingsScreenProtocols_h
 #define SettingsScreenProtocols_h
-#import "SettingsViewModel.h"
+
+@class SettingsPONSOModel;
+@class SettingsViewModel;
 
 @protocol SettingsScreenVIPView <NSObject>
 
@@ -25,7 +27,7 @@
 
 @protocol SettingsScreenVIPPresenter <NSObject>
 
--(void)updateModel:(SettingsViewModel*)settings;
+-(void)updateModel:(SettingsPONSOModel*)settings;
 
 @end
 

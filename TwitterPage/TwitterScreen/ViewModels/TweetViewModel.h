@@ -11,10 +11,12 @@
 
 @interface TweetViewModel : NSObject
 
-@property NSString *text;
-@property NSString *formattedDate;
-@property BOOL favorited;
-@property BOOL showAvatar;
-@property UserViewModel *user;
+@property(nonatomic, readonly) NSString *text;
+@property(nonatomic, readonly) NSString *formattedDate;
+@property(nonatomic, readonly) BOOL favorited;
+@property(nonatomic, readonly) BOOL showAvatar;
+@property(nonatomic, readonly) UserViewModel *user;
+
+-(instancetype)initWithText:(NSString*)text formattedDate:(NSString*)formattedDate favorited:(BOOL)favorited showAvatar:(BOOL)showAvatar user:(UserViewModel*)user;
 
 @end

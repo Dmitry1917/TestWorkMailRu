@@ -10,9 +10,10 @@
 
 @interface UserPONSOModel : NSObject
 
-@property NSString *name;
-@property NSString *screenName;
-@property NSString *avatarUrlStr;
-@property NSDate *creationDate;
+@property(nonatomic, readonly) NSString *name;
+@property(nonatomic, readonly) NSString *screenName;
+@property(nonatomic, readonly) NSString *avatarUrlStr;
+
+-(instancetype)initWithName:(NSString*)name screenName:(NSString*)screenName avatarUrlStr:(NSString*)avatarUrlStr;
 
 @end

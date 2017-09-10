@@ -1,14 +1,14 @@
 //
-//  SettingsViewModel.h
+//  SettingsPONSOModel.h
 //  TwitterPage
 //
-//  Created by DMITRY SINYOV on 31.08.17.
+//  Created by DMITRY SINYOV on 10.09.17.
 //  Copyright © 2017 DMITRY SINYOV. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface SettingsViewModel : NSObject
+@interface SettingsPONSOModel : NSObject
 
 @property(nonatomic, readonly) BOOL showAvatars;
 

@@ -1,14 +1,14 @@
 //
-//  SettingsViewModel.m
+//  SettingsPONSOModel.m
 //  TwitterPage
 //
-//  Created by DMITRY SINYOV on 31.08.17.
+//  Created by DMITRY SINYOV on 10.09.17.
 //  Copyright © 2017 DMITRY SINYOV. All rights reserved.
 //
 
-#import "SettingsViewModel.h"
+#import "SettingsPONSOModel.h"
 
-@implementation SettingsViewModel
+@implementation SettingsPONSOModel
 
 -(instancetype)initWithShowAvatars:(BOOL)showAvatars {
     self = [super init];

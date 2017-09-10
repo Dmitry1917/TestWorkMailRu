@@ -66,18 +66,8 @@
 -(NSArray <TweetPONSOModel*>*)preparePONSOModels {
     NSMutableArray <TweetPONSOModel*>* tweetViewModels = [NSMutableArray array];
     for (TweetModel *tweet in currentTweets) {
-        TweetPONSOModel *tweetPM = [[TweetPONSOModel alloc] init];
-        tweetPM.text = tweet.text;
-        tweetPM.date = tweet.date;
-        tweetPM.favorited = tweet.favorited;
-        tweetPM.showAvatar = showAvatars;
-        
-        UserPONSOModel *userPM = [[UserPONSOModel alloc] init];
-        userPM.name = tweet.user.name;
-        userPM.screenName = tweet.user.screenName;
-        userPM.avatarUrlStr = tweet.user.avatarUrlStr;
-        
-        tweetPM.user = userPM;
+        UserPONSOModel *userPM = [[UserPONSOModel alloc] initWithName:tweet.user.name screenName:tweet.user.screenName avatarUrlStr:tweet.user.avatarUrlStr];
+        TweetPONSOModel *tweetPM = [[TweetPONSOModel alloc] initWithText:tweet.text date:tweet.date favorited:tweet.favorited showAvatar:showAvatars user:userPM];
         [tweetViewModels addObject:tweetPM];
     }
     return tweetViewModels;

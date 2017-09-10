@@ -41,6 +41,7 @@
 		0A9386FC1F56F3C0003CE196 /* TwitterRequestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9386FB1F56F3C0003CE196 /* TwitterRequestParser.m */; };
 		0A9387091F570D2F003CE196 /* CommonDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9387061F570D2F003CE196 /* CommonDateFormatter.m */; };
 		0A93870A1F570D2F003CE196 /* ParseFieldChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9387081F570D2F003CE196 /* ParseFieldChecker.m */; };
+		0AC408361F655F31006A6BBF /* SettingsPONSOModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC408351F655F31006A6BBF /* SettingsPONSOModel.m */; };
 		7C7A933DE1EC429602360247 /* libPods-TwitterPage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF7212A22C6B24D0DC21A54 /* libPods-TwitterPage.a */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,8 @@
 		0A9387061F570D2F003CE196 /* CommonDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonDateFormatter.m; sourceTree = "<group>"; };
 		0A9387071F570D2F003CE196 /* ParseFieldChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseFieldChecker.h; sourceTree = "<group>"; };
 		0A9387081F570D2F003CE196 /* ParseFieldChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseFieldChecker.m; sourceTree = "<group>"; };
+		0AC408341F655F31006A6BBF /* SettingsPONSOModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsPONSOModel.h; sourceTree = "<group>"; };
+		0AC408351F655F31006A6BBF /* SettingsPONSOModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsPONSOModel.m; sourceTree = "<group>"; };
 		3FA603CB495CF6F4E24FFDC0 /* Pods-TwitterPage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterPage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterPage/Pods-TwitterPage.debug.xcconfig"; sourceTree = "<group>"; };
 		A016EFC9B9845826D0E8BB30 /* Pods-TwitterPage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterPage.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterPage/Pods-TwitterPage.release.xcconfig"; sourceTree = "<group>"; };
 		EEF7212A22C6B24D0DC21A54 /* libPods-TwitterPage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TwitterPage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +141,7 @@
 				0A1775181F58224300FC4BB3 /* SettingsScreenInteractor.m */,
 				0A17751A1F58225E00FC4BB3 /* SettingsScreenPresenter.h */,
 				0A17751B1F58225E00FC4BB3 /* SettingsScreenPresenter.m */,
+				0AC408331F655EFD006A6BBF /* PONSOModels */,
 				0A1775221F58287B00FC4BB3 /* ViewModels */,
 				0A17751D1F5822A600FC4BB3 /* SettingsScreenViewController.h */,
 				0A17751E1F5822A600FC4BB3 /* SettingsScreenViewController.m */,
@@ -222,9 +226,9 @@
 		0A38E9D71F54171C00542431 /* TwitterScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0A38E9E61F5420B400542431 /* TwitterScreenProtocols.h */,
 				0A38E9DB1F5417A000542431 /* TwitterScreenRouter.h */,
 				0A38E9DC1F5417A000542431 /* TwitterScreenRouter.m */,
-				0A38E9E61F5420B400542431 /* TwitterScreenProtocols.h */,
 				0A38E9E01F541FEF00542431 /* TwitterScreenInteractor.h */,
 				0A38E9E11F541FEF00542431 /* TwitterScreenInteractor.m */,
 				0A38E9E31F54207100542431 /* TwitterScreenPresenter.h */,
@@ -286,6 +290,15 @@
 				0A9387081F570D2F003CE196 /* ParseFieldChecker.m */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		0AC408331F655EFD006A6BBF /* PONSOModels */ = {
+			isa = PBXGroup;
+			children = (
+				0AC408341F655F31006A6BBF /* SettingsPONSOModel.h */,
+				0AC408351F655F31006A6BBF /* SettingsPONSOModel.m */,
+			);
+			path = PONSOModels;
 			sourceTree = "<group>";
 		};
 		0AE7F5481F542DD9006F09DB /* Common */ = {
@@ -476,6 +489,7 @@
 				0A17752F1F58435400FC4BB3 /* UserModel.m in Sources */,
 				0A38E9E21F541FEF00542431 /* TwitterScreenInteractor.m in Sources */,
 				0A1775161F58222B00FC4BB3 /* SettingsScreenRouter.m in Sources */,
+				0AC408361F655F31006A6BBF /* SettingsPONSOModel.m in Sources */,
 				0A17752E1F58435400FC4BB3 /* TweetModel.m in Sources */,
 				0A44D4BE1F6537FB001C584E /* UserViewModel.m in Sources */,
 				0A17752D1F58435400FC4BB3 /* CommonModel.m in Sources */,
