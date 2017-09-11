@@ -11,6 +11,6 @@
 
 @interface TwitterRequestsManager : NSObject
 
-+(void)askTimelineWithCompletionHandler:(void (^)(NSArray <TweetModel*> *tweets))completionHandler;
++(void)askTimelineWithCompletionHandler:(void (^)(NSArray <TweetModel*> *tweets))completionHandler completionQueue:(dispatch_queue_t)completionQueue;
 
 @end

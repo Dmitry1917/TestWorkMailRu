@@ -14,10 +14,8 @@
 @implementation TwitterScreenPresenter
 
 -(void)updateModel:(NSArray <TweetPONSOModel*> *)tweets {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (!self.view) return;
-        [self.view updateModel:[self prepareViewModelsFromPONSO:tweets]];
-    });
+    if (!self.view) return;
+    [self.view updateModel:[self prepareViewModelsFromPONSO:tweets]];
 }
 
 -(void)updateCounter:(int)number {

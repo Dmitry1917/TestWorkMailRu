@@ -16,7 +16,7 @@
 
 @implementation TwitterRequestsManager
 
-+(void)askTimelineWithCompletionHandler:(void (^)(NSArray <TweetModel*> *tweets))completionHandler {
++(void)askTimelineWithCompletionHandler:(void (^)(NSArray <TweetModel*> *tweets))completionHandler completionQueue:(dispatch_queue_t)completionQueue {
     NSString *resourceURL = @"statuses/home_timeline.json";//?count=1
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:resourceURL relativeToURL:[NSURL URLWithString:baseURL]]
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
@@ -25,10 +25,13 @@
     
     [TwitterRequestSigner signRequest:request withRawPOSTParameters:nil];
     
+    dispatch_queue_t queueForCompletion = completionQueue;
+    if (!queueForCompletion) queueForCompletion = dispatch_get_main_queue();
+    
     [[CommonNetworkManager shared] executeRequest:request withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
         if (error) {
-            completionHandler(nil);
+            dispatch_async(queueForCompletion, ^{ completionHandler(nil); });
             return;
         }
         
@@ -39,15 +42,15 @@
             if (httpResponse.statusCode == 200) {
                 id JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 //NSLog(@"result %@", JSON);
-                
-                completionHandler([TwitterRequestParser parseTimeline:JSON]);
+                NSArray <TweetModel*>* tweets = [TwitterRequestParser parseTimeline:JSON];
+                dispatch_async(queueForCompletion, ^{ completionHandler(tweets); });
             }
             else {
                 id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 
                 NSLog(@"request error %@", json);
                 
-                completionHandler(nil);
+                dispatch_async(queueForCompletion, ^{ completionHandler(nil); });
             }
         }
     }];

@@ -60,7 +60,7 @@
         }
         
         [self setupCounterTimer];
-    }];
+    } completionQueue:nil];
 }
 
 -(NSArray <TweetPONSOModel*>*)preparePONSOModels {
@@ -74,10 +74,8 @@
 }
 
 -(void)setupCounterTimer {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        refreshCounter = 60;
-        refreshTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
-    });
+    refreshCounter = 60;
+    refreshTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
 }
 
 -(void)timerTick {
