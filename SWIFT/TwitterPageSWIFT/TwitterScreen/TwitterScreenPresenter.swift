@@ -9,5 +9,12 @@
 import UIKit
 
 class TwitterScreenPresenter: NSObject {
+    
+    weak var view: TwitterScreenVIPView?
+    
 
+}
+
+extension TwitterScreenPresenter: TwitterScreenVIPPresenter {
+    
 }

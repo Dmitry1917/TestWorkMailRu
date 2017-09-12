@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+protocol TwitterScreenVIPView: class {
+    
+}
+
+protocol TwitterScreenVIPInteractor {
+    func viewDidLoad()
+    func viewDidDismissedOrPoped()
+}
+
+protocol TwitterScreenVIPPresenter {
+    
+}

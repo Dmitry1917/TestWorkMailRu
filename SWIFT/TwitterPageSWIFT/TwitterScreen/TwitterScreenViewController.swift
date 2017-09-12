@@ -9,11 +9,19 @@
 import UIKit
 
 class TwitterScreenViewController: UIViewController {
+    
+    var interactor: TwitterScreenVIPInteractor!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        interactor.viewDidLoad()
+    }
+    
+    override func didMove(toParentViewController parent: UIViewController?) {
+        if (parent == nil) { self.interactor.viewDidDismissedOrPoped() }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +40,8 @@ class TwitterScreenViewController: UIViewController {
     }
     */
 
+}
+
+extension TwitterScreenViewController: TwitterScreenVIPView {
+    
 }

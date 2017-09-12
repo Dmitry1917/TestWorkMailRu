@@ -9,5 +9,17 @@
 import UIKit
 
 class TwitterScreenInteractor: NSObject {
+    
+    var presenter: TwitterScreenVIPPresenter!
 
+}
+
+extension TwitterScreenInteractor: TwitterScreenVIPInteractor {
+    func viewDidLoad() {
+        
+    }
+    
+    func viewDidDismissedOrPoped() {
+        
+    }
 }
