@@ -17,6 +17,7 @@
 		0A5F10D21F67F08C0066962F /* TwitterScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5F10D11F67F08C0066962F /* TwitterScreenPresenter.swift */; };
 		0A5F10D41F67F0AB0066962F /* TwitterScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5F10D31F67F0AB0066962F /* TwitterScreenViewController.swift */; };
 		0A5F10D61F67F0C70066962F /* TwitterScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A5F10D51F67F0C70066962F /* TwitterScreen.storyboard */; };
+		0A5F10D81F6810E50066962F /* CommonNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5F10D71F6810E50066962F /* CommonNetworkManager.swift */; };
 		B923ACAE6AC5FD192065B4EE /* Pods_TwitterPageSWIFT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C115F534B9AA168E6281889 /* Pods_TwitterPageSWIFT.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		0A5F10D11F67F08C0066962F /* TwitterScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterScreenPresenter.swift; sourceTree = "<group>"; };
 		0A5F10D31F67F0AB0066962F /* TwitterScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterScreenViewController.swift; sourceTree = "<group>"; };
 		0A5F10D51F67F0C70066962F /* TwitterScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TwitterScreen.storyboard; sourceTree = "<group>"; };
+		0A5F10D71F6810E50066962F /* CommonNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonNetworkManager.swift; sourceTree = "<group>"; };
 		4C115F534B9AA168E6281889 /* Pods_TwitterPageSWIFT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterPageSWIFT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D28E217728E1EB02F160315 /* Pods-TwitterPageSWIFT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterPageSWIFT.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterPageSWIFT/Pods-TwitterPageSWIFT.release.xcconfig"; sourceTree = "<group>"; };
 		80BFC22C8A30AC8CB3D77F28 /* Pods-TwitterPageSWIFT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterPageSWIFT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterPageSWIFT/Pods-TwitterPageSWIFT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		0A5F10C81F67EF680066962F /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0A5F10D71F6810E50066962F /* CommonNetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A5F10D41F67F0AB0066962F /* TwitterScreenViewController.swift in Sources */,
+				0A5F10D81F6810E50066962F /* CommonNetworkManager.swift in Sources */,
 				0A5F10CE1F67F03A0066962F /* TwitterScreenProtocols.swift in Sources */,
 				0A5F10CC1F67F00D0066962F /* TwitterScreenRouter.swift in Sources */,
 				0A5F10D21F67F08C0066962F /* TwitterScreenPresenter.swift in Sources */,
