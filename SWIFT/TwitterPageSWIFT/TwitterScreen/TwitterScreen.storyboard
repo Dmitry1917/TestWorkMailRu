@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="aV5-nu-7np">
+            <objects>
+                <navigationController storyboardIdentifier="TwitterScreenNC" id="33P-fJ-n7e" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QBq-Kc-Abh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rxy-Tl-5GJ" kind="relationship" relationship="rootViewController" id="5lx-FP-9q1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QWd-Bg-ozM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-535" y="129"/>
+        </scene>
+        <!--Twitter Screen View Controller-->
+        <scene sceneID="Cgs-Di-lH0">
+            <objects>
+                <viewController storyboardIdentifier="TwitterScreenVC" automaticallyAdjustsScrollViewInsets="NO" id="rxy-Tl-5GJ" customClass="TwitterScreenViewController" customModule="TwitterPageSWIFT" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kAF-SV-gOJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="ewX-NH-QQM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hvU-nS-fnK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KEb-0f-a1M">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ewX-NH-QQM" firstAttribute="top" secondItem="KEb-0f-a1M" secondAttribute="bottom" id="0G6-q4-WLV"/>
+                            <constraint firstItem="KEb-0f-a1M" firstAttribute="top" secondItem="kAF-SV-gOJ" secondAttribute="bottom" id="Dxh-z1-cIV"/>
+                            <constraint firstItem="KEb-0f-a1M" firstAttribute="leading" secondItem="hvU-nS-fnK" secondAttribute="leading" id="H2b-aQ-hqq"/>
+                            <constraint firstAttribute="trailing" secondItem="KEb-0f-a1M" secondAttribute="trailing" id="yzc-b2-qzF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8be-Mc-Jb2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VkC-wK-8k9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="293.60000000000002" y="131.78410794602701"/>
+        </scene>
+    </scenes>
+</document>
