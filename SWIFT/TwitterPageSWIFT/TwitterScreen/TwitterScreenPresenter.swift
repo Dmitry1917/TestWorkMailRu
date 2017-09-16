@@ -6,8 +6,6 @@
 //  Copyright © 2017 DMITRY SINYOV. All rights reserved.
 //
 
-import UIKit
-
 class TwitterScreenPresenter: NSObject {
     
     weak var view: TwitterScreenVIPView?
